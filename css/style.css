@@ -1,0 +1,40 @@
+*{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#bienvenida {
+  text-align: center;
+}
+
+#listaProductos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.productos  {
+  padding: 20px;
+  text-align: center;
+}
+
+.productos__img{
+  height: 150px;
+  width: 100px;
+}
+
+#contenedor__carrito{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.barra-producto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 5px;
+  border: 1px solid black;
+}
