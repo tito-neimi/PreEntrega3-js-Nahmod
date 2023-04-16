@@ -84,6 +84,20 @@ function agregarAlCarrito(item) {
     item.precio += item.precioUnidad
     console.log(`La cantidad actual de ${item.nombre} es de ${item.cantidad}`)
   }
+
+  Toastify({
+    text: `${item.nombre} agregado al carrito`,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "left",
+    stopOnFocus: true,
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+
+  }).showToast();
+
   guardarLocal("Carrito", JSON.stringify(carrito.items))
   guardarLocal("precioTotal", JSON.stringify(carrito.precioTotal))
 }
@@ -105,6 +119,20 @@ function elimarDelCarrito(item) {
 
     }
   }
+
+  Toastify({
+    text: `${item.nombre} eliminado al carrito`,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "left",
+    stopOnFocus: true,
+    style: {
+      background: "linear-gradient(to right, #FF441C, #FBA61B)",
+    },
+
+  }).showToast();
+
   guardarLocal("Carrito", JSON.stringify(carrito.items))
   guardarLocal("precioTotal", JSON.stringify(carrito.precioTotal))
 } 
