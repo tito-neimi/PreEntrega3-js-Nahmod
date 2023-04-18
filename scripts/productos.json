@@ -1,0 +1,7 @@
+[
+  {"nombre": "Termo", "precio": 2200, "cantidad": 1, "id": 1, "img": "./assets/termo.jpg"},
+  {"nombre": "Mate", "precio": 1800, "cantidad": 1, "id": 2, "img": "./assets/mate.jpg"},
+  {"nombre": "Yerba", "precio": 500, "cantidad": 1, "id": 3, "img": "./assets/yerba.webp"},
+  {"nombre": "Bombilla", "precio": 2000, "cantidad": 1, "id": 4, "img": "./assets/bombilla.jpg"},
+  {"nombre": "Galletitas", "precio": 500, "cantidad": 1, "id": 5, "img": "./assets/galletitas.jpg"}
+]

@@ -20,12 +20,22 @@ class producto {
 
 }
 
-listaProductos.push((termo = new producto("Termo", 2200, 0001, `./assets/termo.jpg`)));
-listaProductos.push((mate = new producto("Mate", 1800, 0002, `./assets/mate.jpg`)));
-listaProductos.push((yerba = new producto("Yerba", 500, 0003, `./assets/yerba.webp`)));
-listaProductos.push((bombilla = new producto("Bombilla", 1000, 0004, `./assets/bombilla.jpg`)));
-listaProductos.push((galletitas = new producto("Galletitas", 200, 0005, `./assets/galletitas.jpg`)));
 
+fetch('./scripts/productos.json')
+.then ((response) => response.json())
+.then(data => {
+  data.forEach(valor =>{
+    listaProductos.push(valor.id = new producto (valor.nombre, valor.precio, valor.id, valor.img))
+  });
+  crearProductos();
+})
+
+// listaProductos.push((termo = new producto("Termo", 2200, 0001, `./assets/termo.jpg`)));
+// listaProductos.push((mate = new producto("Mate", 1800, 0002, `./assets/mate.jpg`)));
+// listaProductos.push((yerba = new producto("Yerba", 500, 0003, `./assets/yerba.webp`)));
+// listaProductos.push((bombilla = new producto("Bombilla", 1000, 0004, `./assets/bombilla.jpg`)));
+// listaProductos.push((galletitas = new producto("Galletitas", 200, 0005, `./assets/galletitas.jpg`)));
+// crearProductos();
 
 
 const contenedorProductos = document.getElementById("listaProductos");
@@ -35,7 +45,7 @@ const contenedorProductos = document.getElementById("listaProductos");
 
   listaProductos.forEach((Producto) => {
     const div = document.createElement("div");
-    div.innerHTML = ` <img src="${Producto.img}" alt="Imagen de ${Producto.nombre}" class="productos__img"> 
+    div.innerHTML = ` <img src="${Producto.img}" alt="Imagen de ${Producto.nombre}" class="productos__img">
                     <p>${Producto.info} </p>
                      <button id= "btn__${Producto.id}"> Agregar al carrito </button>`;
     div.className = "productos"
@@ -50,16 +60,7 @@ const contenedorProductos = document.getElementById("listaProductos");
 
  }
 
-
-crearProductos();
 const h2 = document.getElementById("bienvenida_nombre")
-
-// do {
-//   var nombre = prompt("Cual es tu nombre?")
-// } while (nombre === "");
-// h2.innerText = `Hola ${nombre}, Bienvenido/a a la tienda del barrio`
-
-
 
 //crear el carrito
 
@@ -72,17 +73,16 @@ const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
 
 //funcion para añadir los productos
 function agregarAlCarrito(item) {
-  comprobacion = carrito.items.includes(item)
-  if (comprobacion == false) {
+  let index = carrito.items.findIndex(a => a.id === item.id);
+  if (index === -1) {
     carrito.items.push(item);
-  carrito.precioTotal += item.precio
-  console.log(`Se agrego al carrito el item ${item.nombre}`)
-  }
-  else {
-    carrito.precioTotal += item.precioUnidad
-    item.cantidad +=1;
-    item.precio += item.precioUnidad
-    console.log(`La cantidad actual de ${item.nombre} es de ${item.cantidad}`)
+    carrito.precioTotal += item.precio;
+    console.log(`Se agrego al carrito el item ${item.nombre}`);
+  } else {
+    carrito.items[index].cantidad += 1;
+    carrito.items[index].precio += carrito.items[index].precioUnidad;
+    carrito.precioTotal += carrito.items[index].precioUnidad;
+    console.log(`La cantidad actual de ${item.nombre} es de ${carrito.items[index].cantidad}`);
   }
 
   Toastify({
@@ -135,7 +135,7 @@ function elimarDelCarrito(item) {
 
   guardarLocal("Carrito", JSON.stringify(carrito.items))
   guardarLocal("precioTotal", JSON.stringify(carrito.precioTotal))
-} 
+}
 
 
 //declaro los elemento html a utilizar en el carrito
