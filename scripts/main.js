@@ -46,8 +46,8 @@ const contenedorProductos = document.getElementById("listaProductos");
   listaProductos.forEach((Producto) => {
     const div = document.createElement("div");
     div.innerHTML = ` <img src="${Producto.img}" alt="Imagen de ${Producto.nombre}" class="productos__img">
-                    <p>${Producto.info} </p>
-                     <button id= "btn__${Producto.id}"> Agregar al carrito </button>`;
+                    <p class="infoProducto">${Producto.info} </p>
+                     <button class="btn_producto" id= "btn__${Producto.id}"> Agregar al carrito </button>`;
     div.className = "productos"
     contenedorProductos.appendChild(div);
     const botonAgragar = document.getElementById(`btn__${Producto.id}`)
@@ -165,10 +165,18 @@ function actualizarCarrito() {
       elimarDelCarrito(item);
       actualizarCarrito();
     });
+    const addbutton = document.createElement ('button');
+    addbutton.textContent = ' + ';
+    addbutton.addEventListener('click', () => {
+      agregarAlCarrito(item);
+      actualizarCarrito();
+    });
+
     itemElement.appendChild(itemName);
     itemElement.appendChild(itemPrice);
-    itemElement.appendChild(itemCantidad);
     itemElement.appendChild(removeButton);
+    itemElement.appendChild(itemCantidad);
+    itemElement.appendChild(addbutton);
     contenedorCarrito.appendChild(itemElement);
     itemElement.className = "barra-producto";
   })

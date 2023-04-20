@@ -3,5 +3,9 @@
   {"nombre": "Mate", "precio": 1800, "cantidad": 1, "id": 2, "img": "./assets/mate.jpg"},
   {"nombre": "Yerba", "precio": 500, "cantidad": 1, "id": 3, "img": "./assets/yerba.webp"},
   {"nombre": "Bombilla", "precio": 2000, "cantidad": 1, "id": 4, "img": "./assets/bombilla.jpg"},
-  {"nombre": "Galletitas", "precio": 500, "cantidad": 1, "id": 5, "img": "./assets/galletitas.jpg"}
+  {"nombre": "Galletitas", "precio": 500, "cantidad": 1, "id": 5, "img": "./assets/galletitas.jpg"},
+  {"nombre": "Matero", "precio": 2300, "cantidad": 1, "id": 6, "img": "./assets/matera-simil-cuero-basket-mate-case.jpg"},
+  {"nombre": "Azucar", "precio": 300, "cantidad": 1, "id": 7, "img": "./assets/azucar.jpg"},
+  {"nombre": "Combo Azucarera y Yerbera para mate", "precio": 3000, "cantidad": 1, "id": 8, "img": "./assets/azucarera-y-yerbera.jpg"},
+  {"nombre": "Taza", "precio": 1500, "cantidad": 1, "id": 9, "img": "./assets/taza.jpg"}
 ]
